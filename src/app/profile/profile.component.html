@@ -1,0 +1,48 @@
+<app-navbar></app-navbar>
+<mat-card class="Profile">
+    <mat-card-content class="profile-dialog-content">
+        <form>
+            <p class="profile-title">
+                <mat-icon>account_circle</mat-icon>My Profile
+            </p>
+            <mat-card-content>Username: {{user.Username}}</mat-card-content>
+            <mat-card-content>Email: {{user.Email}}</mat-card-content>
+            <mat-card-content *ngIf=(user.Birthday)>Birthday:
+                {{userData.Birthday.slice(5,7)}}/{{userData.Birthday.slice(8,10)}}/{{userData.Birthday.slice(0,4)}}
+            </mat-card-content>
+            </form>
+            
+    </mat-card-content>
+    <mat-card-content class="edit-profile-dialog-content">
+            <mat-card-title>Edit Your Profile
+            </mat-card-title>
+            <span class="required">All fields are required to update</span>
+                <form>
+            <mat-form-field>
+                <input matInput [(ngModel)]="userData.Username" placeholder="Username" type="text" name="Username">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [(ngModel)]="userData.Password" placeholder="Password" type="password" name="Password">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [(ngModel)]="userData.Email" placeholder="Email" type="email" name="Email">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [(ngModel)]="userData.Birthday" placeholder="Birthday" type="date" name="Birthday">
+            </mat-form-field>
+        </form>
+        <mat-card-actions class="edit-profile-actions">
+            <button mat-raised-button (click)="editUser()" color="red">Submit</button>
+            </mat-card-actions>
+    </mat-card-content>
+<mat-card>
+    <mat-card-title>My Favorite Movies</mat-card-title>
+    <mat-card class="favorite-movies">
+        <mat-card-content *ngFor="let movie of movies;">
+            <mat-card *ngIf="isFav(movie._id)" class="fav-movies-card">
+            <img src={{movie.ImagePath}} class="movie-images" />
+        </mat-card>
+    
+    </mat-card-content>
+</mat-card>
+</mat-card>
